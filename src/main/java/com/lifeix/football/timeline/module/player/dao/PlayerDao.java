@@ -53,7 +53,7 @@ public class PlayerDao {
         return list;
     }
 
-    public void addPlayer(TLPlayer player) {
+    public void addPlayer(TLPlayerPo player) {
         template.insert(player);
     }
 
@@ -88,6 +88,10 @@ public class PlayerDao {
             }
         }
         return query;
+    }
+
+    public TLPlayerPo getById(String playerId) {
+        return template.findById(playerId, TLPlayerPo.class);
     }
 
 }

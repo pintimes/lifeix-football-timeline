@@ -3,6 +3,7 @@ package com.lifeix.football.timeline.module.player.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,11 @@ public class PlayerController {
             @RequestParam(value = "orderBy", defaultValue = "clotheNum", required = false) String orderBy,
             @RequestParam(value = "isAsc", defaultValue = "true", required = false) boolean isAsc) {
         return playerService.getPlayers(player, limit, orderBy, isAsc);
+    }
+
+    @RequestMapping(value = "/{playerId}", method = RequestMethod.GET)
+    public TLPlayer getPlayer(@PathVariable(value = "playerId") String playerId) {
+        return playerService.getPlayer(playerId);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

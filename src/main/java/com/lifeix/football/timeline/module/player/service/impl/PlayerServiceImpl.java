@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.lifeix.football.common.exception.IllegalparamException;
+import com.lifeix.football.common.exception.NotFindException;
 import com.lifeix.football.timeline.model.TLPlayer;
 import com.lifeix.football.timeline.module.player.dao.PlayerDao;
 import com.lifeix.football.timeline.module.player.po.TLPlayerPo;
@@ -60,8 +61,18 @@ public class PlayerServiceImpl implements PlayerService {
         player.setId(id);
         player.setLikeNum(0);
         player.setCreateTime(new Date());
-        playerDao.addPlayer(player);
+        playerDao.addPlayer(AdapterUtil.toT(player, TLPlayerPo.class));
         return player;
+    }
+
+    @Override
+    public TLPlayer getPlayer(String playerId) {
+        logger.debug("getPost id = {} ", playerId);
+        TLPlayerPo po = playerDao.getById(playerId);
+        if (po == null) {
+            throw new NotFindException("getPlayer: player not find");
+        }
+        return AdapterUtil.toT(po, TLPlayer.class);
     }
 
 }

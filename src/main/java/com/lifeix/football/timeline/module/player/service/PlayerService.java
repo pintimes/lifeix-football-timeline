@@ -10,4 +10,6 @@ public interface PlayerService {
 
     public TLPlayer addPlayer(TLPlayer player);
 
+    public TLPlayer getPlayer(String playerId);
+
 }

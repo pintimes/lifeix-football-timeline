@@ -9,9 +9,14 @@ public class TLTeam {
 
     private String name;
 
+    private String nickname;
+
     private String avatarUrl;
 
-    private String coach;
+    /**
+     * 教练和领队
+     */
+    private List<TLCoach> coach = new ArrayList<TLCoach>();
 
     /**
      * 球员列表
@@ -30,6 +35,14 @@ public class TLTeam {
         return name;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -42,11 +55,11 @@ public class TLTeam {
         this.avatarUrl = avatarUrl;
     }
 
-    public String getCoach() {
+    public List<TLCoach> getCoach() {
         return coach;
     }
 
-    public void setCoach(String coach) {
+    public void setCoach(List<TLCoach> coach) {
         this.coach = coach;
     }
 
