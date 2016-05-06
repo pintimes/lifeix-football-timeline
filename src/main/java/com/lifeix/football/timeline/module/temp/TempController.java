@@ -11,7 +11,7 @@ public class TempController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String print(){
-        return "hello4";
+        return "hello5";
     }
 
 }
