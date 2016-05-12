@@ -1,57 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.lifeix</groupId>
 	<artifactId>lifeix-football-timeline</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>lifeix-football-timeline</name>
 	<description>lifeix-football-timeline</description>
-	<!-- 继承SpringBoot -->
-	<!--its parent is spring-boot-dependencies,we can omit version, our version 
-		inherited from the spring-boot-dependencies -->
+	<!-- 继承Lifeix-football -->
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.3.2.RELEASE</version>
+		<groupId>com.lifeix</groupId>
+		<artifactId>lifeix-football</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<!-- 属性 -->
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- Docker 仓库名称 -->
-		<docker.image.prefix>registry.aliyuncs.com/lifeix</docker.image.prefix>
-	</properties>
+
 	<dependencies>
+		<!-- Common工具类 -->
 		<dependency>
 			<groupId>com.lifeix</groupId>
 			<artifactId>lifeix-football-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	
-		<!-- Web工程 -->
-		<!-- added Tomcat and Spring MVC -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<!-- 执行器 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<!--automatically restart whenever files on the classpath change -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<!--Flagging the dependency as optional is a best practice that prevents 
-				devtools from being transitively applied to other modules using your project -->
-			<optional>true</optional>
-		</dependency>
-		<!-- 测试 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<!-- Mongodb -->
 		<dependency>
@@ -63,60 +27,5 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
 		</dependency>
-		<!-- AOP -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-		<!--org.json -->
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-		</dependency>
-		<!--httpclient -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<!-- use java 1.8 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<!-- Package as an executable jar -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<fork>true</fork>
-				</configuration>
-			</plugin>
-			<!-- Package as a Docker Image -->
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.2.3</version>
-				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<dockerDirectory>src/main/docker</dockerDirectory>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-				</configuration>
-			</plugin>
-		</plugins>
-
-		<finalName>app</finalName>
-	</build>
 </project>
