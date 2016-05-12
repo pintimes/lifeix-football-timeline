@@ -8,15 +8,16 @@ public class TLTeamPO {
 
 	@Id
 	private String id = null;
-	private String avatarUrl = null;
+	private String icon = null;
 	private String name = null;
 
-	public String getAvatarUrl() {
-		return avatarUrl;
+
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setAvatarUrl(String avatarUrl) {
-		this.avatarUrl = avatarUrl;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 	public String getName() {

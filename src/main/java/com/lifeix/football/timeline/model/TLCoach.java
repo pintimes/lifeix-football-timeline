@@ -23,11 +23,6 @@ public class TLCoach {
 
     private String introduction;
 
-    /**
-     * 控制教练的显示顺序
-     */
-    private Integer order;
-
     private Date createTime;
 
     public String getId() {
@@ -84,14 +79,6 @@ public class TLCoach {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
-    }
-
-    public Integer getOrder() {
-        return order;
-    }
-
-    public void setOrder(Integer order) {
-        this.order = order;
     }
 
     public Date getCreateTime() {

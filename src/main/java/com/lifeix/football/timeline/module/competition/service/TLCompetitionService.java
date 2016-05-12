@@ -8,4 +8,6 @@ public interface TLCompetitionService {
 
 	List<TLCompetition> list();
 
+	void changeScore(String id,int hostScore, int guestScore);
+
 }

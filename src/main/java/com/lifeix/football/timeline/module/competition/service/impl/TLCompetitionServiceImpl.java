@@ -23,4 +23,10 @@ public class TLCompetitionServiceImpl implements TLCompetitionService {
 		return AdapterUtil.toTs(pos, TLCompetition.class);
 	}
 
+
+	@Override
+	public void changeScore(String id, int hostScore, int guestScore) {
+		tlCompetitionDao.changeScore(id,hostScore,guestScore);
+	}
+
 }

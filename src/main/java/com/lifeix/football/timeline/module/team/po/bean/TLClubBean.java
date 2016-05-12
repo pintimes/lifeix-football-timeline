@@ -4,7 +4,7 @@ public class TLClubBean {
 
 	private String id = null;
 	private String name = null;
-	private String iconUrl = null;
+	private String icon = null;
 
 	public String getId() {
 		return id;
@@ -22,12 +22,12 @@ public class TLClubBean {
 		this.name = name;
 	}
 
-	public String getIconUrl() {
-		return iconUrl;
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setIconUrl(String iconUrl) {
-		this.iconUrl = iconUrl;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 }
