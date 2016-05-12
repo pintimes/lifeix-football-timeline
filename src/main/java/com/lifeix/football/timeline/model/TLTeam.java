@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TLTeam {
-	
+
 	private String id = null;
 	private String name = null;
 	private String avatarUrl = null;

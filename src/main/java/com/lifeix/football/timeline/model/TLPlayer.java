@@ -109,5 +109,5 @@ public class TLPlayer {
 	public void setClub(TLClub club) {
 		this.club = club;
 	}
-	
+
 }
