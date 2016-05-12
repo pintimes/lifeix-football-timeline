@@ -1,5 +1,6 @@
 package com.lifeix.football.timeline.module.team.po;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.lifeix.football.timeline.module.team.po.bean.TLClubBean;
@@ -7,6 +8,7 @@ import com.lifeix.football.timeline.module.team.po.bean.TLClubBean;
 @Document(collection = "tlplayers")
 public class TLPlayerPO {
 
+	@Id
 	private String id = null;
 	private String name = null;
 	private String avatarUrl = null;
