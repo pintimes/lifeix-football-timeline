@@ -19,7 +19,6 @@ public class TLPlayerPO {
 	private String birthplace = null;
 	private String position = null;
 	private String team = null;
-	private Integer likeNum = null;
 	private TLClubBean club = null;
 
 	public Integer getNumber() {
@@ -100,14 +99,6 @@ public class TLPlayerPO {
 
 	public void setTeam(String team) {
 		this.team = team;
-	}
-
-	public Integer getLikeNum() {
-		return likeNum;
-	}
-
-	public void setLikeNum(Integer likeNum) {
-		this.likeNum = likeNum;
 	}
 
 	public TLClubBean getClub() {

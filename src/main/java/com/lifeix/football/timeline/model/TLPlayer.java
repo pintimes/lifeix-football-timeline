@@ -1,17 +1,16 @@
 package com.lifeix.football.timeline.model;
 
 public class TLPlayer {
+	private String id = null;
+	private String name = null;
+	private String avatarUrl = null;
+	private String position = null;
+	private String team = null;
 	private Integer number = null;
 	private Integer score = null;
 	private String country = null;
 	private String showNum = null;
 	private String birthplace = null;
-	private String avatarUrl = null;
-	private String name = null;
-	private String id = null;
-	private String position = null;
-	private String team = null;
-	private Integer likeNum = null;
 	private TLClub club = null;
 
 	public Integer getNumber() {
@@ -92,14 +91,6 @@ public class TLPlayer {
 
 	public void setTeam(String team) {
 		this.team = team;
-	}
-
-	public Integer getLikeNum() {
-		return likeNum;
-	}
-
-	public void setLikeNum(Integer likeNum) {
-		this.likeNum = likeNum;
 	}
 
 	public TLClub getClub() {

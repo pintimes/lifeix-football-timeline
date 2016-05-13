@@ -11,7 +11,6 @@ public class TLTeamPO {
 	private String icon = null;
 	private String name = null;
 
-
 	public String getIcon() {
 		return icon;
 	}

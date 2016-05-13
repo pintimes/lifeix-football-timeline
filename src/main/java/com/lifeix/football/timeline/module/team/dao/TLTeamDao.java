@@ -22,4 +22,7 @@ public class TLTeamDao {
 		return template.findAll(TLTeamPO.class);
 	}
 
+	public void save(List<TLTeamPO> pos) {
+	}
+
 }

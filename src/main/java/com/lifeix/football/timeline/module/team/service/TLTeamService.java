@@ -10,4 +10,6 @@ public interface TLTeamService {
 
 	List<TLTeam> list();
 
+	void save(List<TLTeam> teams);
+
 }

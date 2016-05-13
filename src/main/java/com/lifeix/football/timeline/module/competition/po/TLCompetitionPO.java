@@ -18,9 +18,7 @@ public class TLCompetitionPO {
 	private Date time = null;
 	private Double lal = null;
 	private String place = null;
-	private Integer hostScore = null;
 	private TLTeamBean hostTeam = null;
-	private Integer guestScore = null;
 	private TLTeamBean guestTeam = null;
 
 	public String getId() {
@@ -63,28 +61,12 @@ public class TLCompetitionPO {
 		this.place = place;
 	}
 
-	public Integer getHostScore() {
-		return hostScore;
-	}
-
-	public void setHostScore(Integer hostScore) {
-		this.hostScore = hostScore;
-	}
-
 	public TLTeamBean getHostTeam() {
 		return hostTeam;
 	}
 
 	public void setHostTeam(TLTeamBean hostTeam) {
 		this.hostTeam = hostTeam;
-	}
-
-	public Integer getGuestScore() {
-		return guestScore;
-	}
-
-	public void setGuestScore(Integer guestScore) {
-		this.guestScore = guestScore;
 	}
 
 	public TLTeamBean getGuestTeam() {

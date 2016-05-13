@@ -2,6 +2,7 @@ package com.lifeix.football.timeline.module.competition.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.lifeix.football.timeline.module.competition.service.TLCompetitionServ
 @RequestMapping(value = "/tlcompetitions")
 public class CompetitionController {
 
+	@Autowired
 	private TLCompetitionService tlCompetitionService;
 
 	/**
