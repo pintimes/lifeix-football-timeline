@@ -28,4 +28,17 @@
 			<artifactId>spring-data-redis</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<build>
+        <plugins>
+            <!-- Package as an executable jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
