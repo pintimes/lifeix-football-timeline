@@ -15,7 +15,7 @@ import com.lifeix.football.timeline.model.TLCompetition;
 import com.lifeix.football.timeline.module.competition.service.TLCompetitionService;
 
 @RestController
-@RequestMapping(value = "/tlcompetitions")
+@RequestMapping(value = "/competitions")
 public class CompetitionController {
 
 	@Autowired

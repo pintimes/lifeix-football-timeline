@@ -26,4 +26,12 @@ public class TLPlayerDao {
 		return template.find(query, TLPlayerPO.class);
 	}
 
+	public void clear() {
+		template.remove(new Query(),TLPlayerPO.class);
+	}
+
+	public void insert(List<TLPlayerPO> pos) {
+		template.insert(pos, TLPlayerPO.class);
+	}
+
 }

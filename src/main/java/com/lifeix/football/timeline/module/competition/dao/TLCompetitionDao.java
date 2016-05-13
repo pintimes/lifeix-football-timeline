@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
-import com.lifeix.football.timeline.model.TLCompetition;
 import com.lifeix.football.timeline.module.competition.po.TLCompetitionPO;
 
 @Repository
@@ -35,8 +34,12 @@ public class TLCompetitionDao {
 		template.findAndModify(query, update, TLCompetitionPO.class);
 	}
 
-	public void save(TLCompetition tlCompetition) {
-		template.save(tlCompetition);	
+	public void insert(List<TLCompetitionPO> pos) {
+		template.insert(pos,TLCompetitionPO.class);
+	}
+
+	public void clear() {
+		template.remove(new Query(),TLCompetitionPO.class);
 	}
 
 }

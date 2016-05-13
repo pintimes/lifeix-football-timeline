@@ -10,6 +10,8 @@ public interface TLCompetitionService {
 
 	void changeScore(String id,int hostScore, int guestScore);
 
-	void save(List<TLCompetition> competitions);
+	void insert(List<TLCompetition> competitions);
+
+	void clear();
 
 }

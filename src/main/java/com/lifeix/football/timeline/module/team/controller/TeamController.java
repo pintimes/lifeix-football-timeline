@@ -13,7 +13,7 @@ import com.lifeix.football.timeline.model.TLTeam;
 import com.lifeix.football.timeline.module.team.service.TLTeamService;
 
 @RestController
-@RequestMapping(value = "/tlteams")
+@RequestMapping(value = "/teams")
 public class TeamController {
 
 	@Autowired

@@ -1,5 +1,6 @@
 package com.lifeix.football.timeline.module.team.service.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,21 @@ public class TLTeamServiceImpl implements TLTeamService {
 	}
 
 	@Override
-	public void save(List<TLTeam> teams) {
+	public void insert(List<TLTeam> teams) {
+		for (TLTeam tlTeam : teams) {
+			List<TLPlayer> players = tlTeam.getPlayers();
+			List<TLPlayerPO> pos = AdapterUtil.toTs(players, TLPlayerPO.class);
+			tlPlayerDao.insert(pos);
+		}
 		List<TLTeamPO> pos = AdapterUtil.toTs(teams, TLTeamPO.class);
-		tlTeamDao.save(pos);
+		tlTeamDao.insert(pos);
+		
+	}
+
+	@Override
+	public void clear() {
+		tlTeamDao.clear();
+		tlPlayerDao.clear();
 	}
 
 }

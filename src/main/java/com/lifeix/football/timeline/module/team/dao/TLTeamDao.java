@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.lifeix.football.timeline.module.team.po.TLTeamPO;
@@ -22,7 +23,12 @@ public class TLTeamDao {
 		return template.findAll(TLTeamPO.class);
 	}
 
-	public void save(List<TLTeamPO> pos) {
+	public void insert(List<TLTeamPO> pos) {
+		template.insert(pos, TLTeamPO.class);
+	}
+
+	public void clear() {
+		template.remove(new Query(),TLTeamPO.class);
 	}
 
 }

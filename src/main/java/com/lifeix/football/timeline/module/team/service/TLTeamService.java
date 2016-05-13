@@ -10,6 +10,8 @@ public interface TLTeamService {
 
 	List<TLTeam> list();
 
-	void save(List<TLTeam> teams);
+	void insert(List<TLTeam> teams);
+
+	void clear();
 
 }
