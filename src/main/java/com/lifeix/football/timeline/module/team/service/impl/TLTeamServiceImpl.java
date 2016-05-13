@@ -1,10 +1,11 @@
 package com.lifeix.football.timeline.module.team.service.impl;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import com.lifeix.football.common.util.AdapterUtil;
 import com.lifeix.football.timeline.model.TLPlayer;
@@ -25,6 +26,9 @@ public class TLTeamServiceImpl implements TLTeamService {
 
 	@Override
 	public TLTeam get(String teamId) {
+		if (StringUtils.isEmpty(teamId)) {
+			return null;
+		}
 		TLTeamPO po = tlTeamDao.findById(teamId);
 		TLTeam team = AdapterUtil.toT(po, TLTeam.class);
 		List<TLPlayerPO> playerpos = tlPlayerDao.findByTeam(teamId);
@@ -41,6 +45,9 @@ public class TLTeamServiceImpl implements TLTeamService {
 
 	@Override
 	public void insert(List<TLTeam> teams) {
+		if (CollectionUtils.isEmpty(teams)) {
+			return;
+		}
 		for (TLTeam tlTeam : teams) {
 			List<TLPlayer> players = tlTeam.getPlayers();
 			List<TLPlayerPO> pos = AdapterUtil.toTs(players, TLPlayerPO.class);
@@ -48,7 +55,7 @@ public class TLTeamServiceImpl implements TLTeamService {
 		}
 		List<TLTeamPO> pos = AdapterUtil.toTs(teams, TLTeamPO.class);
 		tlTeamDao.insert(pos);
-		
+
 	}
 
 	@Override
@@ -56,5 +63,4 @@ public class TLTeamServiceImpl implements TLTeamService {
 		tlTeamDao.clear();
 		tlPlayerDao.clear();
 	}
-
 }

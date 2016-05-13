@@ -2,10 +2,10 @@ package com.lifeix.football.timeline.test;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Assert;
@@ -30,6 +30,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.lifeix.football.common.util.JSONUtils;
 import com.lifeix.football.timeline.Application;
 import com.lifeix.football.timeline.model.TLCompetition;
@@ -82,7 +84,9 @@ public class TimelineTest {
 			Assert.assertNotNull(tlTeam.getName());
 			Assert.assertNotNull(tlTeam.getIcon());
 			Assert.assertNotNull(tlTeam.getPlayers());
-			List<TLPlayer> players = tlTeam.getPlayers();
+			
+			TLTeam temp = readTeam(tlTeam.getId());
+			List<TLPlayer> players = temp.getPlayers();
 			for (TLPlayer tlPlayer : players) {
 				Assert.assertNotNull(tlPlayer);
 				Assert.assertNotNull(tlPlayer.getId());
@@ -177,6 +181,12 @@ public class TimelineTest {
 			}
 		}
 		return null;
+	}
+	
+	private TLTeam readTeam(String id) throws Exception {
+		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.get(TROOT+"/"+id);
+		String result = getResult(mvc, builder);
+		return JSONUtils.json2pojo(result, TLTeam.class);
 	}
 
 	private List<TLTeam> readTeams() throws Exception {

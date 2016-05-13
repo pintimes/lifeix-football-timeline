@@ -1,11 +1,12 @@
 package com.lifeix.football.timeline.module.competition.service.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import com.lifeix.football.common.util.AdapterUtil;
 import com.lifeix.football.timeline.model.TLCompetition;
@@ -24,7 +25,9 @@ public class TLCompetitionServiceImpl implements TLCompetitionService {
 	@Override
 	public List<TLCompetition> list() {
 		List<TLCompetitionPO> pos = tlCompetitionDao.findAll();
-		
+		if (CollectionUtils.isEmpty(pos)) {
+			return null ;
+		}
 		List<TLCompetition> result =  new ArrayList<>();
 		for (TLCompetitionPO tlCompetitionPO : pos) {
 			TLCompetition t = AdapterUtil.toT(tlCompetitionPO, TLCompetition.class);
@@ -39,11 +42,19 @@ public class TLCompetitionServiceImpl implements TLCompetitionService {
 
 	@Override
 	public void changeScore(String id, int hostScore, int guestScore) {
-		tlCompetitionDao.changeScore(id, hostScore, guestScore);
+		if (StringUtils.isEmpty(id)) {
+			return ;
+		}
+		int hscore = Math.max(hostScore, 0);
+		int gscore = Math.max(guestScore, 0);
+		tlCompetitionDao.changeScore(id, hscore, gscore);
 	}
 
 	@Override
 	public void insert(List<TLCompetition> competitions) {
+		if (CollectionUtils.isEmpty(competitions)) {
+			return;
+		}
 		List<TLCompetitionPO> pos = new ArrayList<>();
 		for (TLCompetition tlCompetition : competitions) {
 			TLCompetitionPO e = AdapterUtil.toT(tlCompetition, TLCompetitionPO.class);
